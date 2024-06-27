@@ -13,15 +13,17 @@ import {
   ACTIONS_CORS_HEADERS,
   createPostResponse,
 } from "@solana/actions";
+import Decimal from "decimal.js";
 
 const DONATION_DESTINATION_WALLET =
   process.env.RECIPIENT ?? "CHDBDZ7T5LCfUDzJUtKqcePVpYWoH2tegBUEv1GbDga";
 const DEFAULT_DONATION_AMOUNT_SOL = process.env.DEFAULTAMOUNT
   ? parseFloat(process.env.DEFAULTAMOUNT)
   : 0.1;
+const dAmount = new Decimal(DEFAULT_DONATION_AMOUNT_SOL);
 const DONATION_AMOUNT_SOL_OPTIONS = [
-  DEFAULT_DONATION_AMOUNT_SOL * 0.1,
-  DEFAULT_DONATION_AMOUNT_SOL * 0.5,
+  dAmount.mul(0.1).toNumber(),
+  dAmount.mul(0.5).toNumber(),
   DEFAULT_DONATION_AMOUNT_SOL,
 ];
 
