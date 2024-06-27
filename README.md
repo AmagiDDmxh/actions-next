@@ -1,3 +1,9 @@
+# Actions Next
+
+Become a e-beggar, to be or not to be
+
+## Developemnt
+
 ```
 npm install
 npm run dev
