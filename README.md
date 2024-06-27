@@ -15,12 +15,12 @@ The configuration file is put on [./beggar-config.json](./beggar-config.json), s
 
 ```jsonc
 {
-  "recipient": "<Your wallet>",
+  "recipient": "<7SQNjiuzXZ8fPpSt9akFwpeiY6VWDcFwA3ry8Yu511tpt>",
   "amounts": [0.01, 0.05, 0.1], // amount setting
   "defaultAmount": 0.1,
-  "avatar": "<Your avatar url>",
-  "title": "<Donation title>",
-  "description": "<Donation description>"
+  "avatar": "<https://github.com/lvxuan149/avatr/blob/main/https___storage.googleapis.com_assetdash-elements-collection_meta_2517.png>",
+  "title": "<Donate to 0xDragon888>",
+  "description": "<Buy the creator of this action a coffee by donating a small amount of SOL!>"
 }
 ```
 
