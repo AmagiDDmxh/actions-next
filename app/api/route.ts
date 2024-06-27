@@ -13,11 +13,12 @@ import {
   ACTIONS_CORS_HEADERS,
   createPostResponse,
 } from "@solana/actions";
+import config from "../../beggar-config.json";
 
 const DONATION_DESTINATION_WALLET =
-  "CHDBDZ7T5LCfUDzJUtKqcePVpYWoH2tegBUEv1GbDga";
-const DONATION_AMOUNT_SOL_OPTIONS = [0.01, 0.05, 0.1];
-const DEFAULT_DONATION_AMOUNT_SOL = 0.1;
+  config.recipient ?? "CHDBDZ7T5LCfUDzJUtKqcePVpYWoH2tegBUEv1GbDga";
+const DONATION_AMOUNT_SOL_OPTIONS = config.amounts ?? [0.01, 0.05, 0.1];
+const DEFAULT_DONATION_AMOUNT_SOL = config.defaultAmount ?? 0.1;
 
 export const OPTIONS = GET;
 
@@ -87,11 +88,7 @@ function getDonateInfo(): Pick<
   ActionGetResponse,
   "icon" | "title" | "description"
 > {
-  const icon =
-    "https://ucarecdn.com/f756b9f9-2f78-471e-95d1-f2fcec0c76dd/-/preview/1000x1000/-/quality/smart/-/format/auto/";
-  const title = "Donate to Ameowagi";
-  const description =
-    "Buy the creator of this action a coffee by donating a small amount of SOL!";
+  const { avatar: icon, title, description } = config;
   return { icon, title, description };
 }
 
