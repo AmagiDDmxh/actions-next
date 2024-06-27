@@ -5,7 +5,6 @@ import {
   Transaction,
   clusterApiUrl,
   Connection,
-  TransactionInstruction,
 } from "@solana/web3.js";
 import {
   ActionGetResponse,
@@ -19,19 +18,6 @@ const DONATION_DESTINATION_WALLET =
   "CHDBDZ7T5LCfUDzJUtKqcePVpYWoH2tegBUEv1GbDga";
 const DONATION_AMOUNT_SOL_OPTIONS = [0.01, 0.05, 0.1];
 const DEFAULT_DONATION_AMOUNT_SOL = 0.1;
-
-// export default function handler(req: NextApiRequest, res: NextApiResponse) {
-//   Object.entries(ACTIONS_CORS_HEADERS).forEach(([key, val]) => {
-//     res.setHeader(key, val);
-//   });
-
-//   if (req.method === "GET") {
-//     return GET(req, res);
-//   }
-//   if (req.method === "POST") {
-//     return POST(req, res);
-//   }
-// }
 
 export const OPTIONS = GET;
 
@@ -70,6 +56,7 @@ export function GET(req: Request) {
     headers: ACTIONS_CORS_HEADERS,
   });
 }
+
 export async function POST(req: Request) {
   const requestUrl = new URL(req.url!);
   const amount =
@@ -123,7 +110,7 @@ async function prepareDonateTransaction(
   transaction.add(
     SystemProgram.transfer({
       fromPubkey: sender,
-      toPubkey: new PublicKey(recipient),
+      toPubkey: recipient,
       lamports: lamports,
     })
   );
